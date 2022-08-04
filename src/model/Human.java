@@ -1,7 +1,6 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Scanner;
 
 public class Human implements Serializable {
     //Serializable là một Interface (giao diện) đánh dấu không có các dữ liệu và phương thức
@@ -57,12 +56,6 @@ public class Human implements Serializable {
     public String toString() {
         return "Họ tên: " + name + ", Ngày sinh: " + dateOfBirth + ", CCCD: " + identity + ", SDT:" + phoneNumber;
     }
-    public void ShowCustomerInformation() {
-        System.out.println("Họ và tên khách hàng: " + name);
-        System.out.println("Ngày Tháng năm: " + dateOfBirth);
-        System.out.println("Số chứng minh nhân dân: " + identity);
-    }
-
     public void add() {
     }
 }
