@@ -7,10 +7,10 @@ import model.Human;
 import java.util.Scanner;
 
 public class HotelMenu {
-     Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
 
 
-    public void runa() {
+    public void run() {
         HotelManagement hotelManagement = new HotelManagement();
         int choice = -1;
         do {
@@ -20,52 +20,81 @@ public class HotelMenu {
             choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
-                case 1: {
-                    showAllStudent(hotelManagement);
+                case 1:
+                    showAllRooms(hotelManagement);
                     break;
-                }
-                case 2: {
-                    showCreateHotel(hotelManagement);
+                case 2:
+                    createRoom(hotelManagement);
                     break;
-                }
-                case 3: {
-                    showUpdateHotel(hotelManagement);
+                case 3:
+                    updateRoom(hotelManagement);
                     break;
-                }
-                case 4: {
-                    showDeleteHotel(hotelManagement);
+                case 4:
+                    deleteRoom(hotelManagement);
                     break;
-                }
-                case 5: {
-                    showFindHotel(hotelManagement);
+                case 5:
+                    findRoom(hotelManagement);
                     break;
-                }
-                case 6 : {
-                    getHotel(hotelManagement);
+                case 6:
+                    bookingRoom(hotelManagement);
                     break;
-                }
-                case 7 : {
-                    getHuman(hotelManagement);
+                case 7:
+                    payment(hotelManagement);
                     break;
-                }
+
             }
         } while (choice != 0);
     }
 
-    private void showFindHotel(HotelManagement hotelManagement) {
+    private void payment(HotelManagement hotelManagement) {
+        System.out.println("Nhập số phòng cần thanh toán");
+        String id = scanner.nextLine();
+        Hotel hotel = hotelManagement.getById(id);
+        if(hotel != null) {
+            System.out.println("Số tiền quý khách cần thanh toán là " + hotel.pay() + " VND");
+            hotel.setPerson(null);
+            hotel.setRentDays(0);
+            hotel.setStatus(Hotel.AVAILABLE);
+            hotelManagement.updateById(id,hotel);
+            System.out.println("Đã trả phòng thành công");
+        } else {
+            System.out.println("Nhập sai số phòng");
+        }
+    }
+
+    private void bookingRoom(HotelManagement hotelManagement) {
+        showAllRooms(hotelManagement);
+        System.out.println("Nhập số phòng thuê");
+        String id = scanner.nextLine();
+        System.out.println("Nhập số ngày thuê");
+        int day = Integer.parseInt(scanner.nextLine());
+        Hotel hotel = hotelManagement.getById(id);
+        if (hotel.getStatus().equals(Hotel.AVAILABLE)) {
+            Human human = getHuman(hotelManagement);
+            hotel.setRentDays(day);
+            hotel.setPerson(human);
+            hotel.setStatus(Hotel.BOOKED);
+            hotelManagement.updateById(id, hotel);
+            System.out.println("Khách đã thuê phòng thành công");
+        } else {
+            System.out.println("Phòng đã có người thuê");
+        }
+    }
+
+    private void findRoom(HotelManagement hotelManagement) {
         System.out.println("---Tìm kiếm thông tin phòng---");
         System.out.println("Nhập số phòng cần tìm");
         String id = scanner.nextLine();
-        int index = hotelManagement.findHotelRoomsByID(id);
-        if (index != -1) {
-            System.out.println("Thông tin phòng cần tìm cần tìm: " + hotelManagement.getById(id));
+        Hotel hotel = hotelManagement.getById(id);
+        if (hotel != null) {
+            System.out.println("Thông tin phòng cần tìm cần tìm: " + hotel);
         } else {
-            System.out.println("Không tìm thấy");
+            System.out.println("Mã phòng không tồn tại");
         }
     }
 
 
-    private void showDeleteHotel(HotelManagement hotelManagement) {
+    private void deleteRoom(HotelManagement hotelManagement) {
         System.out.println("Xóa thông tin khách sạn");
         System.out.println("Nhập số phòng cần xóa thông tin");
         String id = scanner.nextLine();
@@ -77,27 +106,27 @@ public class HotelMenu {
         }
     }
 
-    private void showUpdateHotel(HotelManagement hotelManagement) {
+    private void updateRoom(HotelManagement hotelManagement) {
         System.out.println("Chỉnh sửa thông tin khách sạn");
-        System.out.println("Nhập mã khách sạn cần chỉnh sửa thông tin");
+        System.out.println("Nhập số phòng cần chỉnh sửa thông tin");
         String id = scanner.nextLine();
         int index = hotelManagement.findHotelRoomsByID(id);
         if (index != -1) {
-            Hotel hotelRoom = getHotel(hotelManagement);
+            Hotel hotelRoom = setInfoRoom(hotelManagement);
             hotelManagement.updateById(id, hotelRoom);
             System.out.println("Cập nhật thành công!");
         } else {
-            System.out.println("Cập nhật bị lỗi do không tồn tại mã học viên cần tìm!");
+            System.out.println("Cập nhật bị lỗi do không tồn tại phòng cần tìm!");
         }
     }
 
-    private void showCreateHotel(HotelManagement hotelManagement) {
-        System.out.println("Thêm thông tin khách sạn");
-        Hotel hotelRoom = getHotel(hotelManagement);
+    private void createRoom(HotelManagement hotelManagement) {
+        System.out.println("Thêm thông tin phòng khách sạn");
+        Hotel hotelRoom = setInfoRoom(hotelManagement);
         hotelManagement.addNew(hotelRoom);
     }
 
-    private void showAllStudent(HotelManagement hotelManagement) {
+    private void showAllRooms(HotelManagement hotelManagement) {
         int size = hotelManagement.size();
         if (size == 0) {
             System.out.println("Danh sách rỗng");
@@ -107,20 +136,14 @@ public class HotelMenu {
         }
     }
 
-    private Hotel getHotel(HotelManagement hotelManagement) {
-        System.out.println("Nhập số phòng: ");
+    private Hotel setInfoRoom(HotelManagement hotelManagement) {
+        System.out.println("Nhập số phòng tạo mới : ");
         String id = scanner.nextLine();
-        System.out.println("Nhập loại phòng");
+        System.out.println("Nhập loại phòng tạo mới");
         String type = scanner.nextLine();
-        System.out.println("Nhập số ngày trọ: ");
-        int rentDays = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("Nhập trạng thái của phòng: ");
-        String status = scanner.nextLine();
-        System.out.println("Nhập giá phòng");
-        double price = scanner.nextDouble();
-        Human human = getHuman(hotelManagement);
-        return new Hotel(id, type, rentDays, status, price, human);
+        System.out.println("Nhập giá phòng tạo mới");
+        double price = Double.parseDouble(scanner.nextLine());
+        return new Hotel(id, type, price);
     }
 
     private Human getHuman(HotelManagement hotelManagement) {
@@ -132,10 +155,8 @@ public class HotelMenu {
         String identity = scanner.nextLine();
         System.out.println("Nhập số điện thoại: ");
         String phoneNumber = scanner.nextLine();
-
         return new Human(name, dateOfBirth, identity, phoneNumber);
     }
-
 
 
     public void menuHotel() {
@@ -144,10 +165,9 @@ public class HotelMenu {
         System.out.println("3. Sửa thông tin khách sạn");
         System.out.println("4. Xóa thông tin khách sạn");
         System.out.println("5. Tìm kiếm thông tin khách sạn ");
-        System.out.println("6. Nhập Thông tin phòng");
-        System.out.println("7. Nhập Thông tin khách hàng");
+        System.out.println("6. Đặt thuê phòng");
+        System.out.println("7. Thanh toán phòng");
         System.out.println("0. Quay lại");
-
     }
 
 }

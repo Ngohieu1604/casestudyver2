@@ -42,7 +42,7 @@ public class Login {
         boolean isLogin = userManagement.checkUserLogin(acount, passwork);
         if (isLogin){
             System.out.println("Đang nhập thành công");
-            hotelMenu.menuHotel();
+            hotelMenu.run();
         }else {
             System.err.println("Tài khoản hoặc mật khẩu không đúng");
         }

@@ -9,10 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HotelManagement implements GeneralManagement<Hotel>, writefile, readfile {
-    private List<Hotel>hotels = new ArrayList<>();
+    private List<Hotel> hotels = new ArrayList<>();
     public int size(){
         return hotels.size();
     }
+
+    public HotelManagement() {
+    }
+
     public Hotel getHotel(int index){
         return hotels.get(index);
     }
@@ -36,14 +40,14 @@ public class HotelManagement implements GeneralManagement<Hotel>, writefile, rea
 
     @Override
     public void addNew(Hotel hotel) {
-        hotel.add(hotel);
+        hotels.add(hotel);
     }
 
     @Override
     public boolean updateById(String id, Hotel hotel) {
         int index = findHotelRoomsByID(id);
         hotels.set(index, hotel);
-        return false;
+        return true;
     }
 
     @Override
