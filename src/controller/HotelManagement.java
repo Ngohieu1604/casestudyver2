@@ -26,6 +26,7 @@ public class HotelManagement implements GeneralManagement<Hotel>, WriteFile, Rea
         }
         return index;
     }
+
     @Override
     public void displayAll() {
         for (Hotel hotelRoom : hotels) {
@@ -66,6 +67,11 @@ public class HotelManagement implements GeneralManagement<Hotel>, WriteFile, Rea
         InputStream is = new FileInputStream(path);
         ObjectInputStream ois = new ObjectInputStream(is);
         this.hotels = (List<Hotel>) ois.readObject();
+
+    }
+
+    @Override
+    public void writeFile(String path) throws IOException {
 
     }
 

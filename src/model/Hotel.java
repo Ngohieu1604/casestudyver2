@@ -1,7 +1,7 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Scanner;
+
 
 public class Hotel implements Serializable {
         private String id;
@@ -25,6 +25,10 @@ public class Hotel implements Serializable {
         }
 
     public Hotel(String s, String vip, String s1, String s2, String đã_thuê) {
+    }
+
+    public Hotel() {
+        
     }
 
     public String getId() {
@@ -71,7 +75,7 @@ public class Hotel implements Serializable {
             return human;
         }
 
-        public void setPerson(Human person) {
+        public void setPerson(Human human) {
             this.human = human;
         }
 
@@ -82,4 +86,6 @@ public class Hotel implements Serializable {
 
     public void add(Hotel hotel) {
     }
+
+
 }

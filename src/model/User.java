@@ -18,6 +18,9 @@ import java.io.Serializable;
             this.phoneNumber = phoneNumber;
         }
 
+        public User() {
+        }
+
         public String getAcount() {
             return acount;
         }

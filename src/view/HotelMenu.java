@@ -137,10 +137,10 @@ public class HotelMenu {
 
 
 
-    private static void menu() {
+    public static void menu() {
         System.out.println("1. Hiển thị danh sách phòng");
         System.out.println("2. Thêm thông tin khách sạn");
-        System.out.println("3. Cập nhật thông tin khách sạn");
+        System.out.println("3. Sửa thông tin khách sạn");
         System.out.println("4. Xóa thông tin khách sạn");
         System.out.println("5. Tìm kiếm thông tin khách sạn ");
         System.out.println("6. Nhập Thông tin phòng");
