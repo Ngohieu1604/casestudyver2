@@ -105,14 +105,6 @@ public class Hotel implements Serializable {
             }
             return "Phòng: " +  id + ", Loại: " + type + ", Số ngày thuê: " + rentDays + ", Giá: " + price + ", trạng thái: " + status + "\n";
         }
-
-
-    public void displayinformationtobemanaged() {
-        human.ShowCustomerInformation();
-        System.out.println("Số ngày trọ: " + rentDays);
-        System.out.println("Loại phòng: " + type);
-        System.out.println("Giá phòng: " + price);
-    }
     public double pay() {
         return rentDays * price;
     }

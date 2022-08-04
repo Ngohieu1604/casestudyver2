@@ -63,6 +63,9 @@ public class HotelManagement implements GeneralManagement<Hotel>, writefile, rea
     @Override
     public Hotel getById(String id) {
         int index = findHotelRoomsByID(id);
+        if (index == -1) {
+            return null;
+        }
         return hotels.get(index);
     }
 
