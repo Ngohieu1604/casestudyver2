@@ -41,6 +41,8 @@ public class HotelMenu {
                 case 7:
                     payment(hotelManagement);
                     break;
+                case 0:
+
 
             }
         } while (choice != 0);
@@ -167,7 +169,7 @@ public class HotelMenu {
         System.out.println("5. Tìm kiếm thông tin khách sạn ");
         System.out.println("6. Đặt thuê phòng");
         System.out.println("7. Thanh toán phòng");
-        System.out.println("0. Quay lại");
+        System.out.println("0. Đăng xuất");
     }
 
 }

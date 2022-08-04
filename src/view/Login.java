@@ -20,16 +20,12 @@ public class Login {
             choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
-                case 1: {
+                case 1:
                     doLogin();
                     break a;
-                }
-                case 2: {
+                case 2:
                     doRegister();
                     break;
-                }
-                case 0: return;
-
             }
         } while (choice != 0);
     }
@@ -147,6 +143,5 @@ public class Login {
         System.out.println("---Ứng dụng quản lí khách sạn---");
         System.out.println("1.Đăng nhập");
         System.out.println("2.Đăng kí");
-        System.out.println("0.Thoát");
     }
 }
