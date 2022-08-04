@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Scanner;
 
 
 public class Hotel implements Serializable {
@@ -86,6 +87,28 @@ public class Hotel implements Serializable {
 
     public void add(Hotel hotel) {
     }
+    public void Entertheinformationtobemanaged() {
+        Scanner scanner = new Scanner(System.in);
 
+        // nhập thông tin khách trọ
+        human = new Human();
+        human.EnterCustomerInformation();
 
+        System.out.print("Nhập số ngày trọ: ");
+        rentDays = Integer.parseInt(scanner.nextLine());
+        System.out.print("Nhập loại phòng: ");
+        type = scanner.nextLine();
+        System.out.print("Nhập giá phòng: ");
+        price = scanner.nextDouble();
+    }
+
+    public void displayinformationtobemanaged() {
+        human.ShowCustomerInformation();
+        System.out.println("Số ngày trọ: " + rentDays);
+        System.out.println("Loại phòng: " + type);
+        System.out.println("Giá phòng: " + price);
+    }
+    public double Pay() {
+        return rentDays * price;
+    }
 }

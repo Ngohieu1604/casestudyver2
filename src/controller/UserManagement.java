@@ -1,14 +1,14 @@
 package controller;
 
 import model.User;
-import storage.ReadFile;
-import storage.WriteFile;
+import storage.readfile;
+import storage.writefile;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserManagement implements ReadFile, WriteFile {
+public class UserManagement implements readfile, writefile {
 
     private List<User> users = new ArrayList<>();
 

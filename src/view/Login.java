@@ -8,27 +8,27 @@ import java.util.Scanner;
 public class Login {
     Scanner scanner = new Scanner(System.in);
     private UserManagement userManagement = new UserManagement();
-    private  HotelMenu hotelMenu = new HotelMenu();
+    private HotelMenu hotelMenu = new HotelMenu();
 
 
     public void run() {
         int choice = -1;
 
-        do {
-            menu();
+         a: do {
+            menuLogin();
             System.out.println("Nhập lựa chọn của bạn");
             choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
                 case 1: {
                     doLogin();
-                    break;
+                    break a;
                 }
                 case 2: {
                     doRegister();
                     break;
                 }
-                case 0:
+                case 0: return;
 
             }
         } while (choice != 0);
@@ -42,7 +42,7 @@ public class Login {
         boolean isLogin = userManagement.checkUserLogin(acount, passwork);
         if (isLogin){
             System.out.println("Đang nhập thành công");
-            hotelMenu.menu();
+            hotelMenu.menuHotel();
         }else {
             System.err.println("Tài khoản hoặc mật khẩu không đúng");
         }
@@ -143,7 +143,7 @@ public class Login {
     }
 
 
-    public static void menu() {
+    public static void menuLogin() {
         System.out.println("---Ứng dụng quản lí khách sạn---");
         System.out.println("1.Đăng nhập");
         System.out.println("2.Đăng kí");

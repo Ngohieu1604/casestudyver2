@@ -2,6 +2,6 @@ package storage;
 
 import java.io.IOException;
 
-public interface ReadFile {
+public interface readfile {
     void readFile(String path) throws IOException,ClassNotFoundException;
 }

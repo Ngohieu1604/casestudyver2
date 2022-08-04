@@ -7,13 +7,14 @@ import model.Human;
 import java.util.Scanner;
 
 public class HotelMenu {
-    public Scanner scanner = new Scanner(System.in);
+     Scanner scanner = new Scanner(System.in);
 
-    public void run() {
+
+    public void runa() {
         HotelManagement hotelManagement = new HotelManagement();
         int choice = -1;
         do {
-            menu();
+            menuHotel();
             System.out.println("");
             System.out.println("Nhập lựa chọn của bạn");
             choice = scanner.nextInt();
@@ -44,7 +45,7 @@ public class HotelMenu {
                     break;
                 }
                 case 7 : {
-                    getPerson(hotelManagement);
+                    getHuman(hotelManagement);
                     break;
                 }
             }
@@ -118,11 +119,11 @@ public class HotelMenu {
         String status = scanner.nextLine();
         System.out.println("Nhập giá phòng");
         double price = scanner.nextDouble();
-        Human human = getPerson(hotelManagement);
+        Human human = getHuman(hotelManagement);
         return new Hotel(id, type, rentDays, status, price, human);
     }
 
-    private Human getPerson(HotelManagement hotelManagement) {
+    private Human getHuman(HotelManagement hotelManagement) {
         System.out.println("Nhập họ tên khách trọ: ");
         String name = scanner.nextLine();
         System.out.println("Nhập ngày sinh: ");
@@ -137,7 +138,7 @@ public class HotelMenu {
 
 
 
-    public static void menu() {
+    public void menuHotel() {
         System.out.println("1. Hiển thị danh sách phòng");
         System.out.println("2. Thêm thông tin khách sạn");
         System.out.println("3. Sửa thông tin khách sạn");
@@ -146,5 +147,7 @@ public class HotelMenu {
         System.out.println("6. Nhập Thông tin phòng");
         System.out.println("7. Nhập Thông tin khách hàng");
         System.out.println("0. Quay lại");
+
     }
+
 }

@@ -1,14 +1,14 @@
 package controller;
 
 import model.Hotel;
-import storage.ReadFile;
-import storage.WriteFile;
+import storage.readfile;
+import storage.writefile;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HotelManagement implements GeneralManagement<Hotel>, WriteFile, ReadFile {
+public class HotelManagement implements GeneralManagement<Hotel>, writefile, readfile {
     private List<Hotel>hotels = new ArrayList<>();
     public int size(){
         return hotels.size();
