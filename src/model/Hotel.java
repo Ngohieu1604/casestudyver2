@@ -46,10 +46,6 @@ public class Hotel implements Serializable {
         this.status = Hotel.AVAILABLE;
     }
 
-    public Hotel() {
-        
-    }
-
     public String getId() {
             return id;
         }
