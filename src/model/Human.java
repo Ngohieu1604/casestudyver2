@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Scanner;
 
 public class Human implements Serializable {
     //Serializable là một Interface (giao diện) đánh dấu không có các dữ liệu và phương thức
@@ -14,6 +15,10 @@ public class Human implements Serializable {
         this.dateOfBirth = dateOfBirth;
         this.identity = identity;
         this.phoneNumber = phoneNumber;
+    }
+
+    public Human() {
+
     }
 
     public String getName() {
@@ -53,4 +58,22 @@ public class Human implements Serializable {
         return "Họ tên: " + name + ", Ngày sinh: " + dateOfBirth + ", CCCD: " + identity + ", SDT:" + phoneNumber;
     }
 
+    public void EnterCustomerInformation() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhập họ tên khách hàng: ");
+        name = scanner.nextLine();
+        System.out.print("Nhập Ngày Tháng Năm: ");
+        dateOfBirth = scanner.nextLine();
+        System.out.print("Nhập số chứng minh nhân dân: ");
+        identity = scanner.nextLine();
+    }
+
+    public void ShowCustomerInformation() {
+        System.out.println("Họ và tên khách hàng: " + name);
+        System.out.println("Ngày Tháng năm: " + dateOfBirth);
+        System.out.println("Số chứng minh nhân dân: " + identity);
+    }
+
+    public void add() {
+    }
 }

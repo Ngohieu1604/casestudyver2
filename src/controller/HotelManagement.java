@@ -1,6 +1,5 @@
 package controller;
 
-import controller.GeneralManagement;
 import model.Hotel;
 import storage.ReadFile;
 import storage.WriteFile;

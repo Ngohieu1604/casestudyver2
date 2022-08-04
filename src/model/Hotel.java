@@ -1,8 +1,9 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Scanner;
 
-    public class Hotel implements Serializable {
+public class Hotel implements Serializable {
         private String id;
         private String type;
         private int rentDays;
@@ -23,7 +24,10 @@ import java.io.Serializable;
             this.human = human;
         }
 
-        public String getId() {
+    public Hotel(String s, String vip, String s1, String s2, String đã_thuê) {
+    }
+
+    public String getId() {
             return id;
         }
 
@@ -76,6 +80,6 @@ import java.io.Serializable;
             return human + ",  " + "Phòng: " +  id + ", Loại: " + type + ", Số ngày thuê: " + rentDays + ", Giá: " + price + ", trạng thái: " + status;
         }
 
-        public void add(Hotel hotel) {
-        }
+    public void add(Hotel hotel) {
     }
+}
