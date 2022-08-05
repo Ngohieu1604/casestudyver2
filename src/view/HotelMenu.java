@@ -10,10 +10,11 @@ public class HotelMenu {
     Scanner scanner = new Scanner(System.in);
 
 
+
     public void run() {
         HotelManagement hotelManagement = new HotelManagement();
         int choice = -1;
-        do {
+      a:  do {
             menuHotel();
             System.out.println("");
             System.out.println("Nhập lựa chọn của bạn");
@@ -41,9 +42,9 @@ public class HotelMenu {
                 case 7:
                     payment(hotelManagement);
                     break;
-                case 0:
-
-
+                case 8 :
+                    new Login().menuLogin();
+                    break a;
             }
         } while (choice != 0);
     }
@@ -169,7 +170,7 @@ public class HotelMenu {
         System.out.println("5. Tìm kiếm thông tin khách sạn ");
         System.out.println("6. Đặt thuê phòng");
         System.out.println("7. Thanh toán phòng");
-        System.out.println("0. Đăng xuất");
+        System.out.println("8. Đăng xuất");
     }
 
 }

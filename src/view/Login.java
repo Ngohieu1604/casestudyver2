@@ -139,7 +139,7 @@ public class Login {
     }
 
 
-    public static void menuLogin() {
+    public void menuLogin() {
         System.out.println("---Ứng dụng quản lí khách sạn---");
         System.out.println("1.Đăng nhập");
         System.out.println("2.Đăng kí");
