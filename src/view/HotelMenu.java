@@ -43,7 +43,7 @@ public class HotelMenu {
                     payment(hotelManagement);
                     break;
                 case 8 :
-                    new Login().menuLogin();
+                    new Login().run();
                     break a;
             }
         } while (choice != 0);
@@ -62,6 +62,7 @@ public class HotelMenu {
             System.out.println("Đã trả phòng thành công");
         } else {
             System.out.println("Nhập sai số phòng");
+            payment(hotelManagement);
         }
     }
 
@@ -81,6 +82,7 @@ public class HotelMenu {
             System.out.println("Khách đã thuê phòng thành công");
         } else {
             System.out.println("Phòng đã có người thuê");
+            bookingRoom(hotelManagement);
         }
     }
 
@@ -93,6 +95,7 @@ public class HotelMenu {
             System.out.println("Thông tin phòng cần tìm cần tìm: " + hotel);
         } else {
             System.out.println("Mã phòng không tồn tại");
+            findRoom(hotelManagement);
         }
     }
 
@@ -106,6 +109,7 @@ public class HotelMenu {
             System.out.println("Xóa thành công!");
         } else {
             System.out.println("Xóa không thành công");
+            deleteRoom(hotelManagement);
         }
     }
 
@@ -120,6 +124,7 @@ public class HotelMenu {
             System.out.println("Cập nhật thành công!");
         } else {
             System.out.println("Cập nhật bị lỗi do không tồn tại phòng cần tìm!");
+            updateRoom(hotelManagement);
         }
     }
 

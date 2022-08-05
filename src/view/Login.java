@@ -13,7 +13,6 @@ public class Login {
 
     public void run() {
         int choice = -1;
-
          a: do {
             menuLogin();
             System.out.println("Nhập lựa chọn của bạn");
@@ -25,6 +24,8 @@ public class Login {
                     break a;
                 case 2:
                     doRegister();
+                    break;
+                case 0:
                     break;
             }
         } while (choice != 0);
@@ -41,6 +42,7 @@ public class Login {
             hotelMenu.run();
         }else {
             System.err.println("Tài khoản hoặc mật khẩu không đúng");
+            doLogin();
         }
     }
 
@@ -126,6 +128,7 @@ public class Login {
             username = scanner.nextLine();
             if (username.length() < 6 || username.length() > 12) {
                 System.err.println("Tài khoản không hợp lệ");
+                inputAcount();
             } else if (userManagement.checkUsernameExist(username)) {
                 System.err.println("Tài khoản này đã tồn tại");
             }
@@ -143,5 +146,6 @@ public class Login {
         System.out.println("---Ứng dụng quản lí khách sạn---");
         System.out.println("1.Đăng nhập");
         System.out.println("2.Đăng kí");
+        System.out.println("0.Thoát chương trình");
     }
 }
