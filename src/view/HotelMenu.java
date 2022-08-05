@@ -98,7 +98,7 @@ public class HotelMenu {
 
 
     private void deleteRoom(HotelManagement hotelManagement) {
-        System.out.println("Xóa thông tin khách sạn");
+        System.out.println("Xóa thông tin phòng");
         System.out.println("Nhập số phòng cần xóa thông tin");
         String id = scanner.nextLine();
         boolean isDeleted = hotelManagement.deleteById(id);
@@ -110,7 +110,7 @@ public class HotelMenu {
     }
 
     private void updateRoom(HotelManagement hotelManagement) {
-        System.out.println("Chỉnh sửa thông tin khách sạn");
+        System.out.println("Chỉnh sửa thông tin phòng");
         System.out.println("Nhập số phòng cần chỉnh sửa thông tin");
         String id = scanner.nextLine();
         int index = hotelManagement.findHotelRoomsByID(id);
@@ -165,9 +165,9 @@ public class HotelMenu {
     public void menuHotel() {
         System.out.println("1. Hiển thị danh sách phòng");
         System.out.println("2. Thêm thông tin khách sạn");
-        System.out.println("3. Sửa thông tin khách sạn");
-        System.out.println("4. Xóa thông tin khách sạn");
-        System.out.println("5. Tìm kiếm thông tin khách sạn ");
+        System.out.println("3. Sửa thông tin phòng khách sạn");
+        System.out.println("4. Xóa thông tin phòng khách sạn");
+        System.out.println("5. Tìm kiếm thông tin phòng  khách sạn ");
         System.out.println("6. Đặt thuê phòng");
         System.out.println("7. Thanh toán phòng");
         System.out.println("8. Đăng xuất");
